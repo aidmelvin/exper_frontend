@@ -1,0 +1,20 @@
+export const interestsList = [
+    "Music",
+    "Gym",
+    "Excercise",
+    "Running",
+    "Cycling",
+    "Biking",
+    "Swimming",
+    "Reading",
+    "Video games",
+    "Cooking",
+    "TV",
+    "Climbing",
+    "Pets",
+    "Dogs",
+    "Cats",
+    "Painting",
+    "Jogging",
+    "Skeet shooting"
+];

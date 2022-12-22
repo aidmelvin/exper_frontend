@@ -1,26 +1,25 @@
-import React, { useState } from 'react';
-import { Link } from "react-router-dom";
+import { useState } from 'react';
+import { Link, useNavigate } from "react-router-dom";
+import TextField from '@mui/material/TextField';
+import Button from '@mui/material/Button';
 
 import {
   LOGIN_SUCCESS,
-  LOGIN_FAILURE
 } from "../constants/Constants";
 
 import { login } from '../logic/auth';
+import { textBoxStyles } from './styles';
 
 function Login() {
 
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
+  const navigate = useNavigate();
 
   const submit = async () => {
-    // code to run when user clicks "Sign Up button"
     const response = await login(email, password);
     if (response === LOGIN_SUCCESS) {
-        // redirect
-        alert("Successful login. Redirect to home page");
-        // server-side redirect ?
-        // navigate("/login");
+        navigate("/home");
     }
     else {
         alert("Login failed. Please try again");
@@ -30,21 +29,25 @@ function Login() {
   return (
     <div className="App">
         <h3>Login</h3>
-        <input
-            className="loginField" 
-            type="text" 
-            placeholder="University Email"
-            onChange={e => {setEmail(e.target.value)}} />
+        <TextField 
+          label="University Email"
+          sx={textBoxStyles}
+          onChange={(e) => { setEmail(e.target.value) }}
+        />
         <br />
-        <input
-            className="loginField"
-            type="text" 
-            placeholder="Password"
-            onChange={e => {setPassword(e.target.value)}} />
         <br />
-        <button 
-          className="loginButton"
-          onClick={async () => {await submit()}}>Log in</button>
+        <TextField 
+          label="Password"
+          sx={textBoxStyles}
+          type="password"
+          onChange={(e) => { setPassword(e.target.value) }}
+        />
+        <br />
+        <br />
+        <Button 
+            variant="outlined"
+            onClick={async () => {await submit()}}
+        >Log In</Button>
         <br />
         <p>No account? <Link to="/create-account">Create one!</Link></p>
     </div>

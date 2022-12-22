@@ -1,4 +1,3 @@
-import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
@@ -10,20 +9,22 @@ import {
 } from "react-router-dom";
 import Login from './Setup/Login';
 import CreateAccount from './Setup/CreateAccount';
+// import Home from './MainUserContent/HomeOld';
 import Home from './MainUserContent/Home';
+
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
 root.render(
-  <BrowserRouter>
-    <Routes>
-      <Route path="/" element={<App />} />
-      <Route path="/login" element={<Login />} />
-      <Route path="/create-account" element={<CreateAccount />} />
-      <Route path="/home" element={<Home />} />
-    </Routes>
-  </BrowserRouter>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<App />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/create-account" element={<CreateAccount />} />
+          <Route path="/home" element={<Home />} />
+        </Routes>
+      </BrowserRouter>
 );
 
 // If you want to start measuring performance in your app, pass a function
